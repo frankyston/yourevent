@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Eventos</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_events.each do |admin_event| %>
+      <tr>
+        <td><%= admin_event.name %></td>
+        <td><%= admin_event.description %></td>
+        <td><%= admin_event.date %></td>
+        <td>
+          <%= link_to 'Exibir', admin_event, :class => "btn btn-success" %>
+          <%= link_to 'Editar', edit_admin_event_path(admin_event), :class => "btn btn-primary" %>
+          <%= link_to 'Excluir', admin_event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Evento', new_admin_event_path, :class => "btn btn-primary" %>
